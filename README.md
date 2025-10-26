@@ -44,4 +44,3 @@ A **React** app for tracking mood with **CRUD** features, a **weekly chart** (sh
 
 * The chart is rendered **only** if there is at least one daily entry within the last 7 days.
 * When a user submits a mood **< 3**, the app automatically shows a **random tip**; you can also request a tip at any time.
-* 
