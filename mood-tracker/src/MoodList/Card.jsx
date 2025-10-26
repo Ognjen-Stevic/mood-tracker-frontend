@@ -1,5 +1,21 @@
 import { Link } from 'react-router-dom'
 
+/**
+ * Card component displays a single mood entry with its date, time, mood emoji, and description.
+ * 
+ * Props:
+ * @param {Object} data - The mood entry object containing id, date, moodLevel, description, and favorite.
+ * @param {function} onDelete - Optional callback to delete the entry; if provided, a Delete button is shown.
+ * @param {function} favoriteHandler - Callback to toggle the favorite status of the entry.
+ * 
+ * Features:
+ * - Displays mood using emoji based on moodLevel.
+ * - Shows description or placeholder if empty.
+ * - Shows Delete button if onDelete is provided.
+ * - Shows Favorite button to toggle favorite status.
+ * - Shows Edit button linking to `/edit/:id` with state data if onDelete is provided.
+ */
+
 export default function Card({ data, onDelete, favoriteHandler }) {
   const MOOD_EMOJI = { 1: "😢", 2: "🙁", 3: "😐", 4: "🙂", 5: "😄" };
   const d = data?.date ? new Date(data.date) : null;
@@ -46,7 +62,7 @@ export default function Card({ data, onDelete, favoriteHandler }) {
           {data.favorite ? '★' : '☆'}
         </button>
         {onDelete && (
-          <Link to="/izmena" className="btn btn-secondary" state={{ data }}>Izmeni</Link>
+          <Link to={`/edit/${data.id}`} className="btn btn-secondary" state={{ data }}>Edit</Link>
         )}
       </div>
     </>

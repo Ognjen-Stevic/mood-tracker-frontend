@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from './Home/Home'
-import UnosRaspolozenja from './UnosRaspolozenja/UnosRaspolozenja'
-import Prikaz from './Prikaz/Prikaz'
-import Izvestaj from './Izvestaj/Izvestaj'
+import MoodInput from './MoodInput/MoodInput'
+import MoodList from './MoodList/MoodList'
+import Report from './Report/Report'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -12,11 +12,11 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route Route path="/" element={<Home />} />
-      <Route Route path="/unos-raspolozenja" element={<UnosRaspolozenja />} />
-      <Route Route path="/prikaz" element={<Prikaz isFavoritesPage={false} />} />
-      <Route Route path="/izvestaj" element={<Izvestaj />} />
-      <Route Route path="/omiljeni" element={<Prikaz isFavoritesPage={true} />} />
-      <Route Route path="/izmena" element={<UnosRaspolozenja />} />
+      <Route Route path="/mood-input" element={<MoodInput />} />
+      <Route Route path="/list" element={<MoodList isFavoritesPage={false} />} />
+      <Route Route path="/report" element={<Report />} />
+      <Route Route path="/favorites" element={<MoodList isFavoritesPage={true} />} />
+      <Route Route path="/edit/:id" element={<MoodInput />} />
     </Routes>
     </BrowserRouter>
     </>

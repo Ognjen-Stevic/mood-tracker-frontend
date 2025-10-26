@@ -1,7 +1,17 @@
 import React, { useState } from 'react'
 
-export default function MoodPicker({ initial = 3, onChange }) {
-  const [mood, setMood] = useState(initial);
+/**
+ * MoodPicker component allows users to select their mood using radio buttons with emojis.
+ * It accepts an initial mood and provides a callback when the mood is changed.
+ *  
+ * @param {Object} props - The props for the component.
+ * @param {number} [props.initialMood=3] - The initial mood value (1-5). Default is 3 (neutral mood).
+ * @param {function} [props.onChange] - Callback function that is called when the mood is changed. Receives the selected mood value.
+ *
+ */
+
+export default function MoodPicker({ initialMood = 3, onChange }) {
+  const [moodLevel, setMoodLevel] = useState(initialMood);
   const MOOD_OPTIONS = [
     { value: 1, emoji: "😞" },
     { value: 2, emoji: "🙁" },
@@ -10,15 +20,16 @@ export default function MoodPicker({ initial = 3, onChange }) {
     { value: 5, emoji: "🤩" },
   ];
 
+  // Function used to handle change of moodLevel
   const handleChange = (e) => {
     const value = Number(e.target.value)
-    setMood(value)
+    setMoodLevel(value)
     onChange?.(value)
   };
 
   return (
     <fieldset className="flex items-center" role="radiogroup">
-      <legend className="mr-2">Raspolozenje:</legend>
+      <legend className="mr-2">Mood Level:</legend>
 
       <div className='d-flex align-items-center'>
       {MOOD_OPTIONS.map((m) => (
@@ -27,7 +38,7 @@ export default function MoodPicker({ initial = 3, onChange }) {
           <input
           type='radio'
           name='mood'
-          checked={initial === m.value}
+          checked={moodLevel === m.value}
           onChange={handleChange}
           className="peer sr-only"
           value={m.value} />
